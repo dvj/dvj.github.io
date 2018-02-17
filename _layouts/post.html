@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<main class="post_content">
+  <article class="post">
+    <header>
+      <div class="post_image">
+          {% if page.image %}
+            <img src="{{ "" | prepend: site.baseurl | append: page.image }}" alt="{{page.title}}">
+          {% else %}
+            <img src="{{ "/" | prepend: site.baseurl | append: site.post-image }}" alt="{{page.title}}">
+          {% endif %}
+      </div>
+      <div class="post_description">
+        <p class="post_meta">{{page.date | date: '%Y, %b %d'}}</p>
+        <h1 class="post_title">{{page.title}}</h1>
+      </div>
+    </header> <!-- End Header -->
+
+    <div class="entry_content">
+      {{page.content | markdownify}}
+    </div>
+
+    <div class="post_wrapper">
+      <footer class="post_footer cf">
+        <div class="post_tag">
+          <span>Tags:</span>
+          {% for tag in page.tags %}
+          <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </footer>
+    </div>
+  </article> <!-- End Section Post -->
+
+</main> <!-- End Section Post Content -->
+
+{% include footer.html %}

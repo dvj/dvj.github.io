@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<main class="page-content" aria-label="Content">
+<section class="chapters cf">
+    <div class="wrapper">
+        {% for post in paginator.posts %}
+          <div class="chapter">
+            <a href="{{post.url | prepend: site.baseurl}}">
+              {% if post.image %}
+                <img src="{{ "" | prepend: site.baseurl | append: post.image }}" alt="{{post.title}}">
+              {% else %}
+                <img src="{{ "/" | prepend: site.baseurl | append: site.post-image }}" alt="{{post.title}}">
+              {% endif %}
+
+                <div class="chapter_inner">
+                  <p class="chapter_number">{{post.date | date: '%Y, %b %d'}}</p>
+                  <h3 class="chapter_title">{{post.title}}</h3>
+                </div>
+            </a>
+          </div>
+        {% endfor %}
+    </div>
+</section>
+</main>
+
+{% include pagination.html %}

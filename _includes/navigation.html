@@ -1,0 +1,16 @@
+<header class="main_header">
+    <a href="{{site.baseurl}}/" class="logo">{% if site.logo %}{{site.logo}}{% else %}dvj{% endif %}</a>
+    <nav class="main_menu">
+    	{% for link in site.data.navigation %}
+    		{% assign class = "" %}
+    		{% if link.highlight %}
+    			{% assign class = class | append: " highlight" %}
+    		{% endif %}
+
+    		{% if link.link == page.url %}
+    			{% assign class = class | append: " active" %}
+    		{% endif %}
+    		<a href="{% include relative-src.html src=link.link %}" class="{{ class }}" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a>
+    	{% endfor %}
+    </nav>
+</header>
